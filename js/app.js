@@ -61,7 +61,8 @@ const displayDetalse = values => {
     }
     div.innerHTML = `
     <div class="overflow-y-scroll  h-96 p-4 rounded-lg drop-shadow-2xl">
-        <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
+        <img class="rounded-xl block m-auto" src="${values.data.image}" alt="Image">
+        <h1 class="text-center text-3xl font-bold mt-2">${values.data.name}</h1>
         <div class="grid grid-cols-4 gap-2 mt-2">
         <h3 class="text-right text-lg font-bold ">Release Date: </h3>
         <h3 class="text-left text-lg col-span-3">${release}</h3>
