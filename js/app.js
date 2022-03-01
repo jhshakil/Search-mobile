@@ -24,9 +24,9 @@ const displayOutput = values => {
         values.slice(0, 20).forEach(datas => {
             // console.log(datas);
             const div = document.createElement('div');
-            div.classList.add('bg-white', 'rounded-lg')
+            div.classList.add('bg-white', 'rounded-lg', 'border-solid', 'border-gray-300', 'border-2', 'rounded-xl')
             div.innerHTML = `
-            <div class="border-solid border-gray-300 border-2 rounded-xl p-3">
+            <div class="p-3">
                         <img class="rounded-xl block m-auto" src="${datas.image}" alt="Image">
                         <h2 class="text-center text-xl m-2 font-bold">${datas.phone_name}</h2>
                         <h2 class="text-center text-cyan-800 mt-2">Brand : <span class="text-xl font-bold">${datas.brand}</span>
@@ -69,7 +69,7 @@ const displayDetalse = values => {
     //     }
     // }
     div.innerHTML = `
-    <div class="overflow-y-scroll h-96 p-4 rounded-lg drop-shadow-2xl">
+    <div class="overflow-y-scroll  h-96 p-4 rounded-lg drop-shadow-2xl">
                     <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
                     <div class="grid grid-cols-4 gap-2 mt-2">
                     <h3 class="text-right text-lg font-bold ">Release Date: </h3>
