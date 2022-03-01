@@ -58,16 +58,11 @@ const displayDetalse = values => {
     if (release.length === 0) {
         release = 'Release date do not available'
     }
-    // let others = itemsName => {
-    //     let validData = values.data.others.itemsName
-    //     if (values.data.others === undefined) {
-    //         return validData = 'Data not found'
-    //     } else {
-    //         console.log(validData)
-    //         return validData = values.data.others.itemsName
+    let others = () => {
+        if (values.data.others !== undefined) {
 
-    //     }
-    // }
+        }
+    }
     div.innerHTML = `
     <div class="overflow-y-scroll  h-96 p-4 rounded-lg drop-shadow-2xl">
                     <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
@@ -93,20 +88,28 @@ const displayDetalse = values => {
 
                     <h3 class="text-center text-2xl font-bold mt-2">Others</h3>
 
-                    <div class="grid grid-cols-4 gap-4 mt-2">
-                    <h3 class="text-right text-lg font-bold">WLAN</h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.others.WLAN}</h3>
-                    <h3 class="text-right text-lg font-bold">Bluetooth</h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.others.Bluetooth}</h3>
-                    <h3 class="text-right text-lg font-bold">GPS</h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.others.GPS}</h3>
-                    <h3 class="text-right text-lg font-bold">NFC</h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.others.NFC}</h3>
-                    <h3 class="text-right text-lg font-bold">Radio</h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.others.Radio}</h3>
-                    <h3 class="text-right text-lg font-bold">USB</h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.others.USB}</h3>
-                    </div>
+                    ${(() => {
+            if (values.data.others !== undefined) {
+                return `<div class="grid grid-cols-4 gap-4 mt-2">
+                        <h3 class="text-right text-lg font-bold">WLAN</h3>
+                        <h3 class="text-left text-lg col-span-3">${values.data.others.WLAN}</h3>
+                        <h3 class="text-right text-lg font-bold">Bluetooth</h3>
+                        <h3 class="text-left text-lg col-span-3">${values.data.others.Bluetooth}</h3>
+                        <h3 class="text-right text-lg font-bold">GPS</h3>
+                        <h3 class="text-left text-lg col-span-3">${values.data.others.GPS}</h3>
+                        <h3 class="text-right text-lg font-bold">NFC</h3>
+                        <h3 class="text-left text-lg col-span-3">${values.data.others.NFC}</h3>
+                        <h3 class="text-right text-lg font-bold">Radio</h3>
+                        <h3 class="text-left text-lg col-span-3">${values.data.others.Radio}</h3>
+                        <h3 class="text-right text-lg font-bold">USB</h3>
+                        <h3 class="text-left text-lg col-span-3">${values.data.others.USB}</h3>
+                        </div>`
+            } else {
+                return `<h3 class="text-center text-lg">NO data found</h3>`
+            }
+        })()
+        }
+                    
                 </div>
                 <div class="">
                 <button onclick='closing()' class="bg-orange-500 pl-8 pr-8 p-1 rounded block m-auto mt-4">Close</button>
