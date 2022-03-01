@@ -21,7 +21,7 @@ const displayOutput = values => {
                 </div>
         `
     } else {
-        values.forEach(datas => {
+        values.slice(0, 20).forEach(datas => {
             // console.log(datas);
             const div = document.createElement('div');
             div.classList.add('bg-white', 'rounded-lg')
@@ -51,30 +51,63 @@ const detalse = id => {
 const displayDetalse = values => {
     const detalse = document.getElementById('detalse');
     detalse.innerHTML = '';
-    // console.log(values.data.mainFeatures);
+    // console.log(values.data.others);
     const div = document.createElement('div');
-    div.classList.add('bg-orange-200', 'p-4', 'rounded-lg', 'drop-shadow-2xl');
+    div.classList.add('bg-orange-200', 'p-4');
     let release = values.data.releaseDate;
     if (release.length === 0) {
         release = 'Release date do not available'
     }
+    // let others = itemsName => {
+    //     let validData = values.data.others.itemsName
+    //     if (values.data.others === undefined) {
+    //         return validData = 'Data not found'
+    //     } else {
+    //         console.log(validData)
+    //         return validData = values.data.others.itemsName
+
+    //     }
+    // }
     div.innerHTML = `
-    <div class="block m-auto">
+    <div class="overflow-y-scroll h-96 p-4 rounded-lg drop-shadow-2xl">
                     <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
-                    <h3 class="text-center text-lg font-bold mt-2">Release Date: </h3>
-                    <h3 class="text-center">${release}</h3>
+                    <div class="grid grid-cols-4 gap-2 mt-2">
+                    <h3 class="text-right text-lg font-bold ">Release Date: </h3>
+                    <h3 class="text-left text-lg col-span-3">${release}</h3>
+                    </div>
+
                     <h3 class="text-center text-2xl font-bold mt-2">Main Feature</h3>
-                    <h3 class="text-center text-lg font-bold mt-2">Storage</h3>
-                    <h3 class="text-center">${values.data.mainFeatures.storage}</h3>
-                    <h3 class="text-center text-lg font-bold mt-2">Display Size</h3>
-                    <h3 class="text-center">${values.data.mainFeatures.displaySize}</h3>
-                    <h3 class="text-center textlgl font-bold mt-2">Chip Set</h3>
-                    <h3 class="text-center">${values.data.mainFeatures.chipSet}</h3>
-                    <h3 class="text-center text-lg font-bold mt-2">Memory</h3>
-                    <h3 class="text-center">${values.data.mainFeatures.memory}</h3>
-                    <h3 class="text-center text-lg font-bold mt-2">Sensors</h3>
-                    <h3 class="text-center">${values.data.mainFeatures.sensors}</h3>
-                    <button onclick='closing()' class="bg-orange-500 pl-8 pr-8 p-1 rounded block m-auto mt-4">Close</button>
+
+                    <div class="grid grid-cols-4 gap-4 mt-2">
+                    <h3 class="text-right text-lg font-bold">Storage: </h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.storage}</h3>
+                    <h3 class="text-right text-lg font-bold">Display Size: </h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.displaySize}</h3>
+                    <h3 class="text-right textlgl font-bold">Chip Set: </h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.chipSet}</h3>
+                    <h3 class="text-right text-lg font-bold">Memory: </h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.memory}</h3>
+                    <h3 class="text-right text-lg font-bold">Sensors: </h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.sensors}</h3>
+                    </div>
+
+                    <h3 class="text-center text-2xl font-bold mt-2">Others</h3>
+
+                    <h3 class="text-left text-lg">WLAN</h3>
+                    <h3 class="text-left text-lg">${values.data.others.WLAN}</h3>
+                    <h3 class="text-left text-lg">Bluetooth</h3>
+                    <h3 class="text-left text-lg">${values.data.others.Bluetooth}</h3>
+                    <h3 class="text-left text-lg">GPS</h3>
+                    <h3 class="text-left text-lg">${values.data.others.GPS}</h3>
+                    <h3 class="text-left text-lg">NFC</h3>
+                    <h3 class="text-left text-lg">${values.data.others.NFC}</h3>
+                    <h3 class="text-left text-lg">Radio</h3>
+                    <h3 class="text-left text-lg">${values.data.others.Radio}</h3>
+                    <h3 class="text-left text-lg">USB</h3>
+                    <h3 class="text-left text-lg">${values.data.others.USB}</h3>
+                </div>
+                <div class="">
+                <button onclick='closing()' class="bg-orange-500 pl-8 pr-8 p-1 rounded block m-auto mt-4">Close</button>
                 </div>
     `
     detalse.appendChild(div)
