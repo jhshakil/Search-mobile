@@ -9,23 +9,34 @@ const search = () => {
 }
 
 const displayOutput = values => {
+    // console.log(values)
     const output = document.getElementById('items');
+    const noItems = document.getElementById('no-items');
     output.innerHTML = '';
-    values.forEach(datas => {
-        // console.log(datas);
-        const div = document.createElement('div');
-        div.classList.add('bg-white', 'rounded-lg')
-        div.innerHTML = `
-        <div class="border-solid border-gray-300 border-2 rounded-xl p-3">
-                    <img class="rounded-xl block m-auto" src="${datas.image}" alt="Image">
-                    <h2 class="text-center text-xl m-2 font-bold">${datas.phone_name}</h2>
-                    <h2 class="text-center text-cyan-800 mt-2">Brand : <span class="text-xl font-bold">${datas.brand}</span>
-                    </h2>
-                    <button onclick="detalse('${datas.slug}')" class="bg-orange-300 pl-4 pr-4 p-1 rounded block m-auto mt-4">Detalse</button>
+    noItems.innerHTML = '';
+    if (values.length == 0) {
+        noItems.innerHTML = `
+        <div class="bg-red-400 rounded-lg w-1/2 block m-auto">
+                    <h1 class="text-3xl font-bold text-center text-white p-4">No Producht found</h1>
                 </div>
         `
-        output.appendChild(div);
-    })
+    } else {
+        values.forEach(datas => {
+            // console.log(datas);
+            const div = document.createElement('div');
+            div.classList.add('bg-white', 'rounded-lg')
+            div.innerHTML = `
+            <div class="border-solid border-gray-300 border-2 rounded-xl p-3">
+                        <img class="rounded-xl block m-auto" src="${datas.image}" alt="Image">
+                        <h2 class="text-center text-xl m-2 font-bold">${datas.phone_name}</h2>
+                        <h2 class="text-center text-cyan-800 mt-2">Brand : <span class="text-xl font-bold">${datas.brand}</span>
+                        </h2>
+                        <button onclick="detalse('${datas.slug}')" class="bg-orange-300 pl-4 pr-4 p-1 rounded block m-auto mt-4">Detalse</button>
+                    </div>
+            `
+            output.appendChild(div);
+        })
+    }
 }
 
 const detalse = id => {
@@ -43,18 +54,22 @@ const displayDetalse = values => {
     // console.log(values.data.mainFeatures);
     const div = document.createElement('div');
     div.classList.add('bg-orange-200', 'p-4', 'rounded-lg', 'drop-shadow-2xl');
+    let release = values.data.releaseDate;
+    if (release.length === 0) {
+        release = 'Release date do not available'
+    }
     div.innerHTML = `
     <div class="block m-auto">
                     <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
                     <h3 class="text-center text-lg font-bold mt-2">Release Date: </h3>
-                    <h3 class="text-center">${values.data.releaseDate}</h3>
+                    <h3 class="text-center">${release}</h3>
                     <h3 class="text-center text-2xl font-bold mt-2">Main Feature</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Storage</h3>
                     <h3 class="text-center">${values.data.mainFeatures.storage}</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Display Size</h3>
                     <h3 class="text-center">${values.data.mainFeatures.displaySize}</h3>
                     <h3 class="text-center textlgl font-bold mt-2">Chip Set</h3>
-                    <h3 class="text-center">${values.data.mainFeatures.chipSte}</h3>
+                    <h3 class="text-center">${values.data.mainFeatures.chipSet}</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Memory</h3>
                     <h3 class="text-center">${values.data.mainFeatures.memory}</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Sensors</h3>
