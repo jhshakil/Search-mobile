@@ -93,18 +93,20 @@ const displayDetalse = values => {
 
                     <h3 class="text-center text-2xl font-bold mt-2">Others</h3>
 
-                    <h3 class="text-left text-lg">WLAN</h3>
-                    <h3 class="text-left text-lg">${values.data.others.WLAN}</h3>
-                    <h3 class="text-left text-lg">Bluetooth</h3>
-                    <h3 class="text-left text-lg">${values.data.others.Bluetooth}</h3>
-                    <h3 class="text-left text-lg">GPS</h3>
-                    <h3 class="text-left text-lg">${values.data.others.GPS}</h3>
-                    <h3 class="text-left text-lg">NFC</h3>
-                    <h3 class="text-left text-lg">${values.data.others.NFC}</h3>
-                    <h3 class="text-left text-lg">Radio</h3>
-                    <h3 class="text-left text-lg">${values.data.others.Radio}</h3>
-                    <h3 class="text-left text-lg">USB</h3>
-                    <h3 class="text-left text-lg">${values.data.others.USB}</h3>
+                    <div class="grid grid-cols-4 gap-4 mt-2">
+                    <h3 class="text-right text-lg font-bold">WLAN</h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.others.WLAN}</h3>
+                    <h3 class="text-right text-lg font-bold">Bluetooth</h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.others.Bluetooth}</h3>
+                    <h3 class="text-right text-lg font-bold">GPS</h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.others.GPS}</h3>
+                    <h3 class="text-right text-lg font-bold">NFC</h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.others.NFC}</h3>
+                    <h3 class="text-right text-lg font-bold">Radio</h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.others.Radio}</h3>
+                    <h3 class="text-right text-lg font-bold">USB</h3>
+                    <h3 class="text-left text-lg col-span-3">${values.data.others.USB}</h3>
+                    </div>
                 </div>
                 <div class="">
                 <button onclick='closing()' class="bg-orange-500 pl-8 pr-8 p-1 rounded block m-auto mt-4">Close</button>
