@@ -9,11 +9,11 @@ const search = () => {
 }
 
 const displayOutput = values => {
-    // console.log(values)
     const output = document.getElementById('items');
     const noItems = document.getElementById('no-items');
     output.innerHTML = '';
     noItems.innerHTML = '';
+    // product add 
     if (values.length == 0) {
         noItems.innerHTML = `
         <div class="bg-red-400 rounded-lg w-1/2 block m-auto">
@@ -22,7 +22,6 @@ const displayOutput = values => {
         `
     } else {
         values.slice(0, 20).forEach(datas => {
-            // console.log(datas);
             const div = document.createElement('div');
             div.classList.add('bg-white', 'rounded-lg', 'border-solid', 'border-gray-300', 'border-2', 'rounded-xl')
             div.innerHTML = `
@@ -38,11 +37,9 @@ const displayOutput = values => {
         })
     }
 }
-
+// detalse add 
 const detalse = id => {
-    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
-    // console.log(url)
     fetch(url)
         .then(res => res.json())
         .then(datas => displayDetalse(datas))
@@ -51,7 +48,6 @@ const detalse = id => {
 const displayDetalse = values => {
     const detalse = document.getElementById('detalse');
     detalse.innerHTML = '';
-    // console.log(values.data.others);
     const div = document.createElement('div');
     div.classList.add('bg-orange-200', 'p-4');
     let release = values.data.releaseDate;
@@ -65,30 +61,30 @@ const displayDetalse = values => {
     }
     div.innerHTML = `
     <div class="overflow-y-scroll  h-96 p-4 rounded-lg drop-shadow-2xl">
-                    <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
-                    <div class="grid grid-cols-4 gap-2 mt-2">
-                    <h3 class="text-right text-lg font-bold ">Release Date: </h3>
-                    <h3 class="text-left text-lg col-span-3">${release}</h3>
-                    </div>
+        <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
+        <div class="grid grid-cols-4 gap-2 mt-2">
+        <h3 class="text-right text-lg font-bold ">Release Date: </h3>
+        <h3 class="text-left text-lg col-span-3">${release}</h3>
+        </div>
+        
+        <h3 class="text-center text-2xl font-bold mt-2">Main Feature</h3>
 
-                    <h3 class="text-center text-2xl font-bold mt-2">Main Feature</h3>
+        <div class="grid grid-cols-4 gap-4 mt-2">
+        <h3 class="text-right text-lg font-bold">Storage: </h3>
+        <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.storage}</h3>
+        <h3 class="text-right text-lg font-bold">Display Size: </h3>
+        <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.displaySize}</h3>
+        <h3 class="text-right textlgl font-bold">Chip Set: </h3>
+        <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.chipSet}</h3>
+        <h3 class="text-right text-lg font-bold">Memory: </h3>
+        <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.memory}</h3>
+        <h3 class="text-right text-lg font-bold">Sensors: </h3>
+        <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.sensors}</h3>
+        </div>
 
-                    <div class="grid grid-cols-4 gap-4 mt-2">
-                    <h3 class="text-right text-lg font-bold">Storage: </h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.storage}</h3>
-                    <h3 class="text-right text-lg font-bold">Display Size: </h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.displaySize}</h3>
-                    <h3 class="text-right textlgl font-bold">Chip Set: </h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.chipSet}</h3>
-                    <h3 class="text-right text-lg font-bold">Memory: </h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.memory}</h3>
-                    <h3 class="text-right text-lg font-bold">Sensors: </h3>
-                    <h3 class="text-left text-lg col-span-3">${values.data.mainFeatures.sensors}</h3>
-                    </div>
+        <h3 class="text-center text-2xl font-bold mt-2">Others</h3>
 
-                    <h3 class="text-center text-2xl font-bold mt-2">Others</h3>
-
-                    ${(() => {
+        ${(() => {
             if (values.data.others !== undefined) {
                 return `<div class="grid grid-cols-4 gap-4 mt-2">
                         <h3 class="text-right text-lg font-bold">WLAN</h3>
@@ -108,12 +104,11 @@ const displayDetalse = values => {
                 return `<h3 class="text-center text-lg">NO data found</h3>`
             }
         })()
-        }
-                    
-                </div>
-                <div class="">
-                <button onclick='closing()' class="bg-orange-500 pl-8 pr-8 p-1 rounded block m-auto mt-4">Close</button>
-                </div>
+        }                  
+    </div>
+    <div class="">
+        <button onclick='closing()' class="bg-orange-500 pl-8 pr-8 p-1 rounded block m-auto mt-4">Close</button>
+    </div>
     `
     detalse.appendChild(div)
 }
