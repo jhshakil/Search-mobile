@@ -37,24 +37,24 @@ const detalse = id => {
 
 const displayDetalse = values => {
     const detalse = document.getElementById('detalse');
-    console.log(values);
+    console.log(values.data.mainFeatures);
     const div = document.createElement('div');
     div.innerHTML = `
     <div class="w-1/2 block m-auto">
-                    <h1 class="text-center text-3xl font-bold">${values.name}</h1>
+                    <h1 class="text-center text-3xl font-bold">${values.data.name}</h1>
                     <h3 class="text-center text-lg font-bold mt-2">Release Date: </h3>
-                    <h3 class="text-center">${values.releaseDate}</h3>
+                    <h3 class="text-center">${values.data.releaseDate}</h3>
                     <h3 class="text-center text-2xl font-bold mt-2">Main Feature</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Storage</h3>
-                    <h3 class="text-center">${values.name}</h3>
+                    <h3 class="text-center">${values.data.mainFeatures.storage}</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Display Size</h3>
-                    <h3 class="text-center">${values.name}</h3>
+                    <h3 class="text-center">${values.data.mainFeatures.displaySize}</h3>
                     <h3 class="text-center textlgl font-bold mt-2">Chip Set</h3>
-                    <h3 class="text-center">${values.name}</h3>
+                    <h3 class="text-center">${values.data.mainFeatures.chipSte}</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Memory</h3>
-                    <h3 class="text-center">${values.name}</h3>
+                    <h3 class="text-center">${values.data.mainFeatures.memory}</h3>
                     <h3 class="text-center text-lg font-bold mt-2">Sensors</h3>
-                    <h3 class="text-center">${values.name}</h3>
+                    <h3 class="text-center">${values.data.mainFeatures.sensors}</h3>
                 </div>
     `
     detalse.appendChild(div)
